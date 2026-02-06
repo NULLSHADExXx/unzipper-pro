@@ -103,15 +103,25 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
-          merge-multiple: true
+
+      - name: Prepare release files
+        run: |
+          mkdir -p release
+          zip -r release/UnzipperPro-2.0-source.zip . -x ".git/*" -x "build/*"
+          [ -f artifacts/UnzipperPro-macos/UnzipperPro-2.0-macos.dmg ] && cp artifacts/UnzipperPro-macos/UnzipperPro-2.0-macos.dmg release/UnzipperPro-2.0-macos.dmg
+          [ -f artifacts/UnzipperPro-linux/UnzipperPro ] && cp artifacts/UnzipperPro-linux/UnzipperPro release/UnzipperPro-2.0-linux && chmod +x release/UnzipperPro-2.0-linux
+          [ -f artifacts/UnzipperPro-windows/UnzipperPro.exe ] && cp artifacts/UnzipperPro-windows/UnzipperPro.exe release/UnzipperPro-2.0-windows.exe
+          ls -la release/
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          files: artifacts/**/*
+          files: release/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

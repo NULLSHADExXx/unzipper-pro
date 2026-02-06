@@ -70,7 +70,7 @@ brew install cmake qt@6 libarchive pkg-config
 ### Step 2: Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/unzipper-pro.git
+git clone https://github.com/NULLSHADExXx/unzipper-pro.git
 cd unzipper-pro
 ```
 

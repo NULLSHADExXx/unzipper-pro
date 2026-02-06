@@ -60,10 +60,6 @@ Open via **File → Settings** or the Settings toolbar button.
 | **Play sound when extraction completes** | System notification sound |
 | **Verify integrity before deleting archives** | Re-reads archives after extraction before delete |
 
-## Download
-
-Pre-built binaries (DMG, EXE, Linux binary) are available on the [Releases](https://github.com/NULLSHADExXx/unzipper-pro/releases) page. Create a tag (e.g. `v2.0.0`) to trigger an automatic build and release.
-
 ## Building from Source
 
 ### Prerequisites

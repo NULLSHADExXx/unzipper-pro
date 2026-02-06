@@ -1,0 +1,15 @@
+build/
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.user
+.DS_Store
+CMakeCache.txt
+CMakeFiles/
+*.autosave
+*.swp
+*~

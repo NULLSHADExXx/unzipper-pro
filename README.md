@@ -2,6 +2,16 @@
 
 A professional native desktop application for extracting archives. Built with C++ and Qt6, it extracts every file from ZIP, 7Z, RAR, and TAR archives—including empty files, directories, and symlinks.
 
+![Unzipper Pro Screenshot](screenshot.png)
+
+## Download
+
+- **Windows:** [UnzipperPro.exe](https://github.com/NULLSHADExXx/unzipper-pro/releases/latest)
+- **macOS:** [UnzipperPro.dmg](https://github.com/NULLSHADExXx/unzipper-pro/releases/latest)
+- **Linux:** [UnzipperPro-linux-x64](https://github.com/NULLSHADExXx/unzipper-pro/releases/latest)
+
+No installation required—just download and run!
+
 ## What It Does
 
 Unzipper Pro extracts archives to your chosen folder. Each archive is unpacked into its own subfolder. You can queue multiple archives, set per-archive passwords, and run extractions in parallel. The app uses libarchive for robust, complete extraction of all contents.

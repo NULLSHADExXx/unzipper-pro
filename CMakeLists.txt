@@ -55,11 +55,13 @@ set_target_properties(UnzipperPro PROPERTIES
     MACOSX_BUNDLE_ICON_FILE "AppIcon.icns"
 )
 target_sources(UnzipperPro PRIVATE ${CMAKE_SOURCE_DIR}/AppIcon.icns)
-add_custom_command(TARGET UnzipperPro POST_BUILD
-    COMMAND /usr/libexec/PlistBuddy -c "Set :CFBundleIconFile AppIcon" "$<TARGET_BUNDLE_DIR:UnzipperPro>/Contents/Info.plist"
-    COMMAND codesign --force --deep -s - "$<TARGET_BUNDLE_DIR:UnzipperPro>"
-)
-set_source_files_properties(${CMAKE_SOURCE_DIR}/AppIcon.icns PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+if(APPLE)
+    set_source_files_properties(${CMAKE_SOURCE_DIR}/AppIcon.icns PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+    add_custom_command(TARGET UnzipperPro POST_BUILD
+        COMMAND /usr/libexec/PlistBuddy -c "Set :CFBundleIconFile AppIcon" "$<TARGET_BUNDLE_DIR:UnzipperPro>/Contents/Info.plist"
+        COMMAND codesign --force --deep -s - "$<TARGET_BUNDLE_DIR:UnzipperPro>"
+    )
+endif()
 
 # Installation
 install(TARGETS UnzipperPro

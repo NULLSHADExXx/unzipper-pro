@@ -132,7 +132,7 @@ Contributions are welcome. Open an issue or submit a pull request.
 
 ## License
 
-MIT License — see [LICENSE](LICENSE).
+Free for everyone. Use, modify, and share — but never for sale. See [LICENSE](LICENSE).
 
 ---
 

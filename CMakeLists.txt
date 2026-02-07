@@ -15,8 +15,15 @@ find_package(Qt6 COMPONENTS
     REQUIRED
 )
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(LIBARCHIVE REQUIRED libarchive)
+# Cross-platform libarchive detection
+if(WIN32)
+    find_package(LibArchive REQUIRED)
+    set(LIBARCHIVE_LIBRARIES LibArchive::LibArchive)
+    set(LIBARCHIVE_INCLUDE_DIRS "")
+else()
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(LIBARCHIVE REQUIRED libarchive)
+endif()
 
 set(PROJECT_SOURCES
     src/main.cpp
@@ -40,9 +47,11 @@ target_link_libraries(UnzipperPro
     ${LIBARCHIVE_LIBRARIES}
 )
 
-target_include_directories(UnzipperPro PRIVATE
-    ${LIBARCHIVE_INCLUDE_DIRS}
-)
+if(NOT WIN32)
+    target_include_directories(UnzipperPro PRIVATE
+        ${LIBARCHIVE_INCLUDE_DIRS}
+    )
+endif()
 
 # Set application properties
 set_target_properties(UnzipperPro PROPERTIES
